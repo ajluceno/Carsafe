@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text color="light">
+        <ion-text color="light" class="fw700">Añadir Coche</ion-text>
+      </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile">
+  
+  <ion-card no-margin>
+      <form [formGroup]="onAnadirForm" class="list-form">
+      <ion-card-content class="bg-profile" >
+          <img [src]="fotoGal" >
+          <h1 class="fw500"></h1>
+          <ion-button icon-left color="secondary" (click)="fotoGaleria()">
+            <ion-icon name="photos"></ion-icon>
+            Editar Foto
+          </ion-button>
+        </ion-card-content>
+
+    <ion-grid fixed no-padding>
+      <ion-row>
+        <ion-col size="12" padding>
+
+          <ion-list margin-bottom>
+            <ion-list-header color="light">
+              <ion-label class="fw700">Datos coche</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label color="dark" position="stacked">Marca:</ion-label>
+              <ion-input inputmode="text" [(ngModel)]="marca" placeholder="Ej.: Fiat" formControlName="marca">
+              </ion-input>
+            </ion-item>
+            <p ion-text class="textForm"
+              *ngIf="onAnadirForm.get('marca').touched && onAnadirForm.get('marca').hasError('required')">
+              <ion-text color="black">
+                Introduzca una marca correcto
+              </ion-text>
+            </p>
+
+            <ion-item>
+              <ion-label color="dark" position="stacked">Modelo:</ion-label>
+              <ion-input inputmode="text" [(ngModel)]="modelo" placeholder="Ej.: Stilo 3p" formControlName="modelo">
+              </ion-input>
+            </ion-item>
+            <p ion-text class="textForm"
+              *ngIf="onAnadirForm.get('modelo').touched && onAnadirForm.get('modelo').hasError('required')">
+              <ion-text color="black">
+                Introduzca un modelo correcto
+              </ion-text>
+            </p>
+
+            <ion-item>
+              <ion-label color="dark" position="stacked">Combustible:</ion-label>
+              <ion-input inputmode="text" [(ngModel)]="combustible" placeholder="Ej.: Diesel"
+                formControlName="combustible"></ion-input>
+            </ion-item>
+            <p ion-text class="textForm"
+              *ngIf="onAnadirForm.get('combustible').touched && onAnadirForm.get('combustible').hasError('required')">
+              <ion-text color="black">
+                Introduzca un combustible correcto
+              </ion-text>
+            </p>
+
+
+            <ion-item>
+              <ion-label color="dark" position="stacked">Años del vehículo:</ion-label>
+              <ion-input inputmode="text" [(ngModel)]="ano" formControlName="pais" placeholder="Ej.: 12"
+                formControlName="ano"></ion-input>
+            </ion-item>
+            <p ion-text class="textForm"
+              *ngIf="onAnadirForm.get('ano').touched && onAnadirForm.get('ano').hasError('required')">
+              <ion-text color="black">
+                Introduzca un ano correcto
+              </ion-text>
+            </p>
+
+
+            <ion-item>
+                <ion-label color="dark" position="stacked">Matrícula:</ion-label>
+                <ion-input inputmode="text" [(ngModel)]="matricula"  placeholder="Ej.: 1225AAA"
+                  formControlName="matricula"></ion-input>
+              </ion-item>
+              <p ion-text class="textForm"
+                *ngIf="onAnadirForm.get('matricula').touched && onAnadirForm.get('matricula').hasError('required')">
+                <ion-text color="black">
+                  Introduzca una matricula correcta
+                </ion-text>
+              </p>
+
+          </ion-list>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div>
+      <ion-button size="large" expand="full" color="dark" (click)="guardarCoche()"  no-margin>Guardar</ion-button>
+    </div>
+  </form>
+  </ion-card>
+</ion-content>

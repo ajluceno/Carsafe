@@ -1,0 +1,20 @@
+
+    ion-content {
+        --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+    }
+
+    ion-list {
+        &.list-md {
+            padding: 0;
+        }
+    }
+
+
+    .text08 {
+        font-size: .8rem !important;
+        color: #fff !important;
+      }
+      .nombre {
+        font-size: 1.2em !important;
+        color: #fff !important;
+      }

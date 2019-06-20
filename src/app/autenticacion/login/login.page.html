@@ -1,0 +1,66 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="theme-bg"></div>
+  <div class="auth-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <h1>
+        <ion-text color="light" class="fw700">
+          CarSafe
+        </ion-text>
+      </h1>
+      <img src="assets/fotos/loginfoto.gif" />
+    </div>
+
+    <!-- Login form -->
+    <form [formGroup]="onLoginForm" class="list-form">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Email
+        </ion-label>
+        <ion-input color="secondary" [(ngModel)]="email" type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <p ion-text class="text08"
+        *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
+        <ion-text color="warning">
+          Introduzca un email correcto
+        </ion-text>
+      </p>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock" item-start></ion-icon>
+          Contraseña
+        </ion-label>
+        <ion-input [(ngModel)]="password" color="secondary" type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p ion-text color="warning" class="text08"
+        *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
+        <ion-text color="warning">
+          Introduzca su contraseña con minimo 6 caracteres
+        </ion-text>
+      </p>
+    </form>
+
+
+    <div>
+      <ion-button icon-left size="medium" (click)="loginUser()" expand="full" shape="round" color="dark" type="submit"
+        [disabled]="!onLoginForm.valid" tappable>
+        <ion-icon name="log-in"></ion-icon>
+        Iniciar sesión
+      </ion-button>
+
+    </div>
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span class="paz" tappable>
+        <ion-text color="light">
+          ¿Nuevo? <strong (click)=" goToRegister()">Registrate aquí</strong>
+        </ion-text>
+      </span>
+    </div>
+
+  </div>
+</ion-content>

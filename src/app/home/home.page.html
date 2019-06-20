@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button color="secondary"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-text color="light">
+            <ion-text color="light" class="fw700">CarSafe</ion-text>
+          </ion-text>
+      </ion-title>
+    </ion-toolbar>
+    <ion-toolbar color="dark">
+      <ion-searchbar (ionChange)="getFilteredItem($event, $event)" placeholder="Buscar vehículo"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+      <ion-refresher style="color: var(--ion-fondo-refresher)" (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content id='spinner' style="background-color: var(--ion-fondo-refresher)" pullingIcon="arrow-dropdown" pullingText="Suelta Para Actualizar"
+          refreshingSpinner="lines" refreshingText="Actualizando">
+          </ion-refresher-content>
+        </ion-refresher>
+
+    <ion-card class="bg-white" *ngFor="let item of listadoPanelCoche;let i = index">
+        <img src="{{item.foto}}">
+      <ion-button expand="full" color="dark"  (click)="abrirModal(item.id, item.ano, item.autor, item.foto, item.latitud, item.longitud, item.marca, item.modelo, item.matricula)" no-margin>
+        {{item.marca}} 
+      </ion-button>
+    </ion-card>
+  
+  </ion-content>
+  <ion-footer>
+    <popmenu></popmenu>
+  </ion-footer>

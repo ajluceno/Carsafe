@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons style="color:#fff" slot="start">
+      <ion-icon class="atras" name="arrow-back" (click)="atras()"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      <ion-text color="light">
+        <ion-text color="light" class="fw700">CarSafe</ion-text>
+      </ion-text>
+    </ion-title>
+  </ion-toolbar>
+
+
+  <ion-segment [(ngModel)]="category" (ionChange)="slides.slideTo(category)" style="background-color: black">
+    <ion-segment-button layout="icon-start" value="0" style="--padding-end:-3px;--padding-start:0px" style="color:#fff">
+      <ion-icon name="paper"></ion-icon>
+      <ion-label>Información</ion-label>
+    </ion-segment-button>
+    <ion-segment-button layout="icon-start" value="1" style="--padding-end:0px;--padding-start:0px" style="color:#fff">
+      <ion-icon name="color-fill"></ion-icon>
+      <ion-label>Operaciones</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <div id='indicator' class="SwipedTabs-indicatorSegment" [ngStyle]="{'width.%': (100/this.tabs.length)}"
+    style="margin-top:-4px"></div>
+
+</ion-header>
+<ion-content>
+
+  <ion-slides color="primary" #slides
+    (ionSlideTransitionStart)="updateIndicatorPosition();updateCat(slides.getActiveIndex())"
+    (ionSlideWillChange)="updateIndicatorPosition()" (ionSlideDidChange)="updateIndicatorPosition()" #SwipedTabsSlider
+    (ionSlideDrag)="animateIndicator($event)">
+
+
+    <ion-slide>
+      <ion-card no-margin>
+        <ion-card-content class="bg-profile">
+          <img src="{{this.foto}}" />
+          <h1 class="fw500"></h1>
+        </ion-card-content>
+
+
+        <ion-grid fixed no-padding>
+          <ion-row>
+            <ion-col size="12" padding>
+
+              <ion-list margin-bottom>
+
+                <ion-list-header color="light">
+                  <ion-label class="fw700">Datos Coche</ion-label>
+                </ion-list-header>
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Marca:</ion-label>
+                  <ion-input inputmode="text" value="{{this.marca}}" readonly></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Modelo:</ion-label>
+                  <ion-input inputmode="email" value="{{this.modelo}}" readonly> </ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label color="dark" position="stacked">Matricula:</ion-label>
+                    <ion-input inputmode="text" value="{{this.matricula}}" readonly> </ion-input>
+                  </ion-item>
+
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Propietario:</ion-label>
+                  <ion-input inputmode="text" value="{{this.autor}}" readonly></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Año:</ion-label>
+                  <ion-input inputmode="text" value="{{this.ano}}" readonly></ion-input>
+                </ion-item>
+
+
+              </ion-list>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card no-margin>
+        <ion-card-content class="bg-profile">
+          <img src="{{this.foto}}" />
+          <h1 class="fw500"></h1>
+          <ion-button icon-left color="secondary" (click)="abrirModal(this.id,this.latitud,this.longitud)">
+            <ion-icon name="locate"></ion-icon>
+            Ver Ubicación
+          </ion-button>
+          <ion-button (click)="updatePos()">
+            <ion-icon name="locate"></ion-icon>
+            Cambiar Ubicación
+          </ion-button>
+          <ion-button icon-left color="red" (click)="borrarCoche(this.id)">
+              <ion-icon name="trash"></ion-icon>
+              Borrar Coche
+            </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button color="secondary"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-text color="light">
+            <ion-text color="light" class="fw700">{{ "Configuración" | translate }}</ion-text>
+          </ion-text>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content >
+    <ion-item class="bg-profile" *ngFor="let item of listadoPanel;let i = index">
+      <ion-avatar slot="start">
+        <img src="{{item.foto}}" class="user-avatar">
+      </ion-avatar>
+      <ion-label>
+        <ion-text color="light">
+          <h2>
+            <strong>{{item.user}}</strong>
+          </h2>
+        </ion-text>
+        <ion-text color="tertiary">
+          <h3>
+              {{userEmail}}
+          </h3>
+        </ion-text>
+        <ion-button icon-left size="small" shape="round" color="dark" (click)=" irPerfil() ">
+          <ion-icon name="contact"></ion-icon>
+          Perfil
+        </ion-button>
+        <ion-button icon-left size="small" shape="round" color="secondary" (click)="desconectar()">
+          <ion-icon name="log-out"></ion-icon>
+          {{"Salir" | translate }}
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  
+    <ion-list no-border>
+      <ion-list-header>
+        <ion-text color="dark">
+          <h5>{{"General" | translate }}</h5>
+        </ion-text>
+      </ion-list-header>
+      <ion-item>
+        <ion-icon name="settings" slot="start" color="primary"></ion-icon>
+        <ion-label color="primary">{{ 'idioma' | translate }}</ion-label>
+        <ion-select cancelText="Cancelar" okText="Aceptar"  (ionChange)="cambiarIdioma($event)">
+          <ion-select-option  value="es" selected >{{"Español" | translate}}</ion-select-option>
+          <ion-select-option value="en" >Inglés</ion-select-option>
+  
+        </ion-select>
+      </ion-item>
+     
+    </ion-list>
+  </ion-content>
+  
